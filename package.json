@@ -8,9 +8,9 @@
     "start": "node api/index.js",
     "production": "NODE_ENV=production nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "data:import": "node api/seed.js",
-    "product": "node api/product.js",
-    "generate-password": "node api/script.js"
+    "data:import": "nodemon script/seed.js",
+    "product": "nodemon script/product.js",
+    "generate-password": "nodemon script/script.js"
   },
   "author": "Shehu",
   "license": "Regular",
