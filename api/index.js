@@ -47,24 +47,43 @@ app.get("/", (req, res) => {
 });
 
 // In your Express app or API route https://your-vercel-deployment-url/seed
-app.get('/seed', async (req, res) => {
+let isConnected = false;
+
+const connectDBB = async () => {
+  if (isConnected) {
+    console.log("Using existing MongoDB connection");
+    return;
+  }
+
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000,  // Set a longer timeout (30 seconds)
     });
+    isConnected = true;
+    console.log("MongoDB connected successfully");
+  } catch (err) {
+    console.error("MongoDB connection failed:", err.message);
+    throw new Error("MongoDB connection error: " + err.message);
+  }
+};
 
+app.get('/seed', async (req, res) => {
+  try {
+    await connectDBB();
     console.log("MongoDB connected successfully");
 
-    // Run the seed function directly
+    // Perform your seeding logic here (i.e., Language.deleteMany() and others)
     await seedDatabase();
 
     res.status(200).send("Database seeded successfully");
   } catch (err) {
-    console.error("MongoDB connection error:", err.message);
-    res.status(500).send(`MongoDB connection failed: ${err.message}`);
+    console.error("MongoDB connection error:", err);
+    res.status(500).send(`Seeding failed: ${err.message}`);
   }
 });
+
 
 
 
