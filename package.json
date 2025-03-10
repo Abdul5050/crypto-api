@@ -8,11 +8,11 @@
     "start": "node api/index.js",
     "production": "NODE_ENV=production nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "data:import": "node script/seed.js",
-    "product": "node script/product.js",
-    "generate-password": "node script/script.js"
+    "data:import": "node api/seed.js",
+    "product": "node api/product.js",
+    "generate-password": "node api/script.js"
   },
-  "author": "HtmlLover",
+  "author": "Shehu",
   "license": "Regular",
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
