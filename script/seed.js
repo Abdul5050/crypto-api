@@ -31,7 +31,7 @@ const attributeData = require("../utils/attributes");
 const Setting = require("../models/Setting");
 const settingData = require("../utils/settings");
 
-connectDB();
+// connectDB();
 const importData = async () => {
   try {
     await Language.deleteMany();
@@ -72,4 +72,4 @@ const importData = async () => {
   }
 };
 
-importData();
+module.exports = importData;  // Export importData function
