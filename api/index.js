@@ -20,6 +20,8 @@ const currencyRoutes = require("../routes/currencyRoutes");
 const languageRoutes = require("../routes/languageRoutes");
 const notificationRoutes = require("../routes/notificationRoutes");
 const { isAuth, isAdmin } = require("../config/auth");
+const mongoose = require("mongoose");
+const { exec } = require("child_process");
 // const {
 //   getGlobalSetting,
 //   getStoreCustomizationSetting,
@@ -44,16 +46,37 @@ app.get("/", (req, res) => {
 });
 
 // In your Express app or API route https://your-vercel-deployment-url/seed
+
+
 app.get('/seed', async (req, res) => {
-  const { exec } = require("child_process");
-  exec("npm run data:import", (err, stdout, stderr) => {
+  // Log the MongoDB connection error before attempting to seed
+  try {
+    // MongoDB Connection attempt
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("MongoDB connected successfully");
+
+    // Run the seeding script after successful connection
+    exec("npm run data:import", (err, stdout, stderr) => {
       if (err) {
-          res.status(500).send("Seeding failed");
-          return;
+        console.error("Seeding failed:", stderr);  // Log the error from the script
+        res.status(500).send(`Seeding failed: ${stderr}`);
+        return;
       }
+      console.log("Seeding Output:", stdout);  // Log the successful seeding output
       res.status(200).send("Database seeded successfully");
-  });
+    });
+
+  } catch (err) {
+    // MongoDB connection failed, return exact error
+    console.error("MongoDB connection error:", err.message);
+    res.status(500).send(`MongoDB connection failed: ${err.message}`);
+  }
 });
+
 
 
 //this for route will need for store front, also for admin dashboard
