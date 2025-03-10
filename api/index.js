@@ -22,6 +22,7 @@ const notificationRoutes = require("../routes/notificationRoutes");
 const { isAuth, isAdmin } = require("../config/auth");
 const mongoose = require("mongoose");
 const { exec } = require("child_process");
+const path = require('path');
 // const {
 //   getGlobalSetting,
 //   getStoreCustomizationSetting,
@@ -50,6 +51,8 @@ app.get("/", (req, res) => {
 
 app.get('/seed', async (req, res) => {
   // Log the MongoDB connection error before attempting to seed
+  
+
   try {
     // MongoDB Connection attempt
     await mongoose.connect(process.env.MONGO_URI, {
@@ -58,10 +61,12 @@ app.get('/seed', async (req, res) => {
     });
 
     console.log("MongoDB connected successfully");
+    console.log("Current directory1: ", path.resolve());
 
     // Run the seeding script after successful connection
     exec("npm run data:import", (err, stdout, stderr) => {
       if (err) {
+        console.log("Current directory2: ", path.resolve());
         console.error("Seeding failed:", stderr);  // Log the error from the script
         res.status(500).send(`Seeding failed: ${stderr}`);
         return;
