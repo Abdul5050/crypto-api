@@ -1,15 +1,17 @@
+require("dotenv").config();
+
 const settings = [
   {
     setting: {
       number_of_image_per_product: "5",
-      shop_name: "KachaBazar",
-      address: "59 Station Rd, Purls Bridge, United Kingdom",
-      company_name: "HtmlLover ltd",
+      shop_name: "CryptoShop",
+      address: "59 Avenue Rd, Dentist Garden, Nigeria",
+      company_name: "Cryptoshoper ltd",
       vat_number: "47589",
       post_code: "2030",
-      contact: "019579034",
-      email: "kachabazar@gmail.com",
-      website: "kachabazar-admin.vercel.app",
+      contact: "09080087168",
+      email: "tacticshustle@gmail.com",
+      website: "crypto-admin.vercel.app",
       default_currency: "$",
       default_time_zone: "Africa/Lagos",
       default_date_format: "MMM D, YYYY",
@@ -838,11 +840,11 @@ const settings = [
         block4_logo:
           "https://res.cloudinary.com/ahossain/image/upload/v1697688576/settings/logo-color_el4zmy.svg",
         block4_address: {
-          en: "987 Andre Plain Suite High Street 838, Lake Hestertown, USA",
+          en: "Abuja, Nigeria",
           de: "987 Andre Plain Suite High Street 838, Lake Hestertown, USA",
         },
-        block4_phone: "02.356.1666",
-        block4_email: "ccruidk@test.com",
+        block4_phone: "09080087168",
+        block4_email: "tacticshustle@gmail.com",
         social_facebook: "https://www.facebook.com/",
         social_twitter: "https://twitter.com/",
         social_pinterest: "https://www.pinterest.com/",
@@ -850,12 +852,12 @@ const settings = [
         social_whatsapp: "https://web.whatsapp.com/",
         payment_method_img:
           "https://res.cloudinary.com/ahossain/image/upload/v1697688607/settings/payment-logo_qhslgz.webp",
-        bottom_contact: "+6599887766",
+        bottom_contact: "+2349080087168",
       },
       slug: {
         right_box_status: true,
         card_description_one: {
-          en: "Free shipping applies to all orders over shipping €100",
+          en: "Free shipping applies to all orders over shipping $100",
           de: "Kostenloser Versand gilt für alle Bestellungen über 100 € Versandkosten",
         },
         card_description_two: {
@@ -892,8 +894,8 @@ const settings = [
           "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png",
         meta_keywords: "e-commerce, online store",
         meta_title:
-          "KachaBazar - React Grocery & Organic Food Store e-commerce Template",
-        meta_url: "https://kachabazar-store-nine.vercel.app/",
+          "Cryptoshoper - React Grocery & Organic Food Store e-commerce Template",
+        meta_url: "https://crypto-store.vercel.app/",
       },
     },
     name: "storeCustomizationSetting",
@@ -915,16 +917,16 @@ const settings = [
       facebook_id: "",
       facebook_secret: "",
       nextauth_secret: "",
-      next_api_base_url: "http://localhost:5055/api",
+      next_api_base_url: "https://crypto-api.vercel.app/api",
       stripe_key:
-        "pk_test_51PusFzLS2pVM8hd8U91RQOthxJKvwWCJxpmSM16xMttqMunxuvLifzEMhQnxEpr5yyBJWPXCqKtFtsatmEtuOTIv00MaPS2TpA",
+        "",
       stripe_secret:
-        "sk_test_51PusFzLS2pVM8hd8p1OUp7oAbMsHy5xtQ8hDJ426DOUbGWCO7kGC6NCfZYtDFQj87rrEali0Bd5YKK502c1aKffu004s0jelJI",
+        "",
       stripe_status: true,
       razorpay_status: false,
       razorpay_id: "",
       razorpay_secret: "",
-      meta_url: "https://kachabazar-store-nine.vercel.app/",
+      meta_url: "https://crypto-store.vercel.app/",
       tawk_chat_property_id: "",
       tawk_chat_status: false,
       tawk_chat_widget_id: "",
